@@ -1,0 +1,21 @@
+.title {
+  color: var(--title);
+}
+
+.title1 {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 100%;
+}
+
+.title2 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+}
+
+.title3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 100%;
+}
