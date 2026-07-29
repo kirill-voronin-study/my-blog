@@ -6,12 +6,14 @@ import { useState } from "react";
 function LikeWrapper() {
   const [isActive, setActive] = useState(false);
 
-  function handleLike() {
+  async function handleLike() {
     if (isActive) {
       setActive((prev) => !prev);
     } else {
       try {
-        fetch("https://jsonplaceholder.typicode.com/posts/1");
+        await fetch("https://jsonplaceholder.typicode.com/posts/1", {
+          method: "POSt",
+        });
         setActive(true);
       } catch (error) {
         console.error(error);
