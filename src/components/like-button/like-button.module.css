@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.button {
+  background-color: transparent;
+  border: 1px solid #303030;
+  color: #303030;
+  padding: 10px;
+  border-radius: 40px;
+  width: 48px;
+  height: 48px;
+
+  &:hover {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+  }
+}
+
+.active {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background-color: var(--primary);
+
+  svg {
+    fill: white;
+  }
+
+  &:hover {
+    border: 1px solid var(--primary-hover);
+    color: var(--primary-hover);
+    background-color: var(--primary-hover);
+  }
+}

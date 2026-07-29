@@ -1,8 +1,10 @@
 import { Card } from "@/components";
+import styles from "./page.module.css";
+import LikeWrapper from "./components/like-wrapper";
 
 export default function Home() {
   return (
-    <main>
+    <main className={styles.container}>
       <Card
         img="/grid.png"
         topic="Front-end"
@@ -12,6 +14,7 @@ export default function Home() {
         content="Грид-раскладка (CSS Grid Layout) представляет собой двумерную систему сеток в CSS. Гриды подойдут и для верстки основных областей страницы.."
         timeToRead="3 минуты"
       />
+      <LikeWrapper />
     </main>
   );
 }
