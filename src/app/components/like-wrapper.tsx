@@ -12,7 +12,7 @@ function LikeWrapper() {
     } else {
       try {
         await fetch("https://jsonplaceholder.typicode.com/posts/1", {
-          method: "POSt",
+          method: "POST",
         });
         setActive(true);
       } catch (error) {
