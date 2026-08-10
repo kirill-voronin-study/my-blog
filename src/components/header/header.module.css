@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 36px;
+}
+
+.logo {
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 100%;
+}
+
+.link {
+  cursor: pointer;
+}
