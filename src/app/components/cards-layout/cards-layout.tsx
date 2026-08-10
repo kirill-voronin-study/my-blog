@@ -1,20 +1,19 @@
+import { Post } from "@/interfaces";
 import styles from "./cards-layout.module.css";
 import { Card } from "@/components";
 
-const mapper = new Array(6).fill({ length: 5 });
-
-function CardsLayout() {
+function CardsLayout({ cards }: { cards: Post[] }) {
   return (
     <div className={styles.container}>
-      {mapper.map((_, index) => (
+      {cards.map((card, index) => (
         <Card
-          key={`card-${index}`}
+          key={`card-${card.id}`}
           img="/grid.png"
           topic="Front-end"
           date="1 месяц назад"
           like={4}
-          title="Как работать с CCS Grid"
-          content="Грид-раскладка (CSS Grid Layout) представляет собой двумерную систему сеток в CSS. Гриды подойдут и для верстки основных областей страницы.."
+          title={card.title}
+          content={card.body}
           timeToRead="3 минуты"
         />
       ))}
