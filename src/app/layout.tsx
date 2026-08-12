@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <GithubContext value="https://github.com/kirill-voronin-study/my-blog">
+    <GithubContext value={process.env.NEXT_PUBLIC_GITHUB_URL ?? ""}>
       <html lang="ru" className={`${openSans.variable}`}>
         <body>
           <Header />
