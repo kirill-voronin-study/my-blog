@@ -1,8 +1,10 @@
 import Image from "next/image";
 import styles from "./card.module.css";
 import { Button, Like, Text, Title } from "@/components";
+import Link from "next/link";
 
 interface CardProps {
+  id: number;
   img: string;
   topic: string;
   date: string;
@@ -13,6 +15,7 @@ interface CardProps {
 }
 
 function Card({
+  id,
   img,
   topic,
   date,
@@ -44,9 +47,11 @@ function Card({
       </div>
       <div className={styles.footer}>
         <Text size="xs">{timeToRead}</Text>
-        <Button appearance="ghoast" arrow="right">
-          Читать
-        </Button>
+        <Link href={`/${id}`}>
+          <Button appearance="ghoast" arrow="right">
+            Читать
+          </Button>
+        </Link>
       </div>
     </div>
   );

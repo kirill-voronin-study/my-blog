@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components";
+import { GithubContext } from "@/context";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -19,11 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${openSans.variable}`}>
-      <body>
-        <Header />
-        {children}
-      </body>
-    </html>
+    <GithubContext value={process.env.NEXT_PUBLIC_GITHUB_URL ?? ""}>
+      <html lang="ru" className={`${openSans.variable}`}>
+        <body>
+          <Header />
+          {children}
+        </body>
+      </html>
+    </GithubContext>
   );
 }

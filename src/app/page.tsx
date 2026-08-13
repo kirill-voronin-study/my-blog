@@ -1,14 +1,13 @@
 import styles from "./page.module.css";
-import LikeWrapper from "./components/like-wrapper";
 import CardsLayout from "./components/cards-layout/cards-layout";
+import { getPosts } from "@/api/post";
 
-export default function Home() {
+export default async function Home() {
+  const cards = (await getPosts()).data;
+
   return (
     <main className={styles.container}>
-      <CardsLayout />
-      <div className={styles["like-container"]}>
-        <LikeWrapper />
-      </div>
+      <CardsLayout cards={cards} />
     </main>
   );
 }
