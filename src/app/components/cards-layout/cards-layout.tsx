@@ -5,8 +5,9 @@ import { Card } from "@/components";
 function CardsLayout({ cards }: { cards: Post[] }) {
   return (
     <div className={styles.container}>
-      {cards.map((card, index) => (
+      {cards.map((card) => (
         <Card
+          id={card.id}
           key={`card-${card.id}`}
           img="/grid.png"
           topic="Front-end"
