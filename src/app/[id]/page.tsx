@@ -1,5 +1,8 @@
 import { getPostById, getPosts } from "@/api";
-import { Card } from "@/components";
+import { Devider, Like, Text, Title } from "@/components";
+import Image from "next/image";
+import styles from "./page.module.css";
+import LikeWrapper from "./components/like-wrapper";
 
 export async function generateStaticParams() {
   const cards = (await getPosts()).data;
@@ -12,18 +15,23 @@ async function Page(params: PageProps<"/[id]">) {
   const post = (await getPostById(Number(id))).data;
 
   return (
-    <div>
-      <Card
-        id={post.id}
-        key={`post-${post.id}`}
-        img="/grid.png"
-        topic="Front-end"
-        date="1 месяц назад"
-        like={4}
-        title={post.title}
-        content={post.body}
-        timeToRead="3 минуты"
+    <div className={styles.page}>
+      <Title tag={1}>{post.title}</Title>
+      <div className={styles.tagsContainer}>
+        <Text size="xs">Front-end</Text>
+        <Devider />
+        <Text size="xs">1 месяц</Text>
+        <Devider />
+        <Text size="xs">3 минуты</Text>
+        <Devider />
+        <Like value={4} />
+      </div>
+      <Image src="/grid.png" alt="Изображение поста" width={667} height={440} />
+      <div
+        className={styles.content}
+        dangerouslySetInnerHTML={{ __html: post.body }}
       />
+      <LikeWrapper />
     </div>
   );
 }
