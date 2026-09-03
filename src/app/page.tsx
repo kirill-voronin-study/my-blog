@@ -3,7 +3,7 @@ import CardsLayout from "./components/cards-layout/cards-layout";
 import { getPosts } from "@/api/post";
 
 export default async function Home() {
-  const cards = (await getPosts()).data;
+  const cards = await getPosts();
 
   return (
     <main className={styles.container}>
