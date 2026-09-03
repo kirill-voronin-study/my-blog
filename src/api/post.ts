@@ -6,5 +6,5 @@ export async function getPosts() {
 }
 
 export async function getPostById(id: number) {
-  return await api.get<Post>(`/posts/${id}`);
+  return (await api.get<Post>(`/posts/${id}`)).data;
 }

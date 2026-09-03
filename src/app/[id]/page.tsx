@@ -1,8 +1,9 @@
-import { getPostById, getPosts } from "@/api";
+import { getComments, getPostById, getPosts } from "@/api";
 import { Devider, Like, Text, Title } from "@/components";
 import Image from "next/image";
 import styles from "./page.module.css";
 import LikeWrapper from "./components/like-wrapper";
+import Comment from "./components/comments/comment";
 
 export async function generateStaticParams() {
   const cards = (await getPosts()).data;
@@ -12,7 +13,11 @@ export async function generateStaticParams() {
 
 async function Page(params: PageProps<"/[id]">) {
   const { id } = await params.params;
-  const post = (await getPostById(Number(id))).data;
+
+  const [post, comments] = await Promise.all([
+    getPostById(Number(id)),
+    getComments({ postId: Number(id) }),
+  ]);
 
   return (
     <div className={styles.page}>
@@ -32,6 +37,15 @@ async function Page(params: PageProps<"/[id]">) {
         dangerouslySetInnerHTML={{ __html: post.body }}
       />
       <LikeWrapper />
+      <Title tag={2}>Комментарии</Title>
+      {comments.map((comment) => (
+        <Comment
+          key={`comment-${comment.id}`}
+          name={comment.name}
+          email={comment.email}
+          content={comment.body}
+        />
+      ))}
     </div>
   );
 }
