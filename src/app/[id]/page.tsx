@@ -6,7 +6,7 @@ import LikeWrapper from "./components/like-wrapper";
 import Comment from "./components/comments/comment";
 
 export async function generateStaticParams() {
-  const cards = (await getPosts()).data;
+  const cards = await getPosts();
 
   return cards.map((post) => ({ id: String(post.id) }));
 }
